@@ -1,0 +1,556 @@
+<?xml version='1.0' standalone='yes' ?>
+<?xml-stylesheet type="text/xsl" href='NI VeriStand FPGA DMA.xsl'?>
+<FPGADMAChannelData xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation = "NI VeriStand FPGA DMA.xsd">
+
+    <!--This is a sample XML file for specifying the content of the DMA bitstreams.  Comments describe the various elements in the file.
+    Many of the elements are optional.  The comment will specify if an element is optional and any default value that will be used if the
+    tag is left out. -->
+	
+    <Version>2.0</Version>  <!--Version of XML file.  Always 2.0. -->
+	
+    <Bitfile>%Target %Name.lvbitx</Bitfile>
+        <!--Optional: Name of bitfile.  The default value is the same name as this file, but with the
+        extension .lvbitx.  The bitfile must be in same directory as this file. -->
+
+    <Categories>    <!--Beginning of defining Categories-->
+        <!--Optional: Categories describes the hierarchy of the channels used in System Explorer.  If Categories is not specified
+        the hierarchy will be inferred based on the Category tags on the individual channels.  Empty descriptions and default symbols will be used
+        for all folders that are not found in the Categories section, but referenced by a channel. -->
+
+        <Category>  <!--Beginning of Inputs Category-->
+            <!--Category is a single level of the hierarchy.  It can specify a description and a symbol to use in the tree, as well
+            as zero or more contained category -->
+
+            <Name>Input</Name>  <!--The name as the category should be displayed in the tree.  The name must be unique with in its set of siblings. -->
+            <Description>This section contains all the inputs from the FPGA Board.</Description>    <!--Optional: Description to be shown in System Explorer -->
+
+            <Category>  <!--Analog Input Category-->
+                <Name>Analog</Name>
+                <Description>This section contains all the analog inputs from the FPGA Board.</Description>
+                <Symbol>AI</Symbol>
+            </Category>
+
+            <Category>  <!--Digital Input Category-->
+                <Name>Digital</Name>
+                <Description>This section contains all the digital inputs from the FPGA Board.</Description>
+                <Symbol>DI</Symbol>
+            </Category>
+
+            <Category>  <!--PWM Input Category-->
+                <Name>PWM</Name>
+                <Description>This section contains all the PWM inputs from the FPGA Board.</Description>
+                <Symbol>PWM In</Symbol>
+            </Category>
+
+        </Category> <!--End of Inputs Category-->
+
+        <Category>  <!--Beginning of Outputs Category-->
+            <Name>Output</Name>
+            <Description>This section contains all the outputs from the FPGA Board.</Description>
+
+            <Category>  <!--Analog Output Category-->
+                <Name>Analog</Name>
+                <Description>This section contains all the analog outputs from the FPGA Board.</Description>
+                <Symbol>AO</Symbol>
+            </Category>
+
+            <Category>  <!--Digital Output Category-->
+                <Name>Digital</Name>
+                <Description>This section contains all the digital outputs from the FPGA Board.</Description>
+                <Symbol>DO</Symbol>
+            </Category>
+
+            <Category>  <!--PWM Output Category-->
+                <Name>PWM</Name>
+                <Description>This section contains all the PWM outputs from the FPGA Board.</Description>
+                <Symbol>PWM Out</Symbol>
+            </Category>
+
+        </Category> <!--End of Outputs Category-->
+
+    </Categories>   <!--End of defining Categories-->
+
+
+    <DMA_Read>  <!--Specifies the content of the DMA_Read DMA channel-->
+
+        <Packets>12</Packets>
+            <!--Number of U64 packets contained in the DMA stream.  The number of Packet elements specified in XML may be less than this number.
+            If the number of Packet elements is less than the number of packets, then all the packets are read but the last U64 are ignored. -->
+
+        <Packet/>   <!--Packet 1-->
+            <!--An empty Packet element specifies an element that is to be ignored.  The first bit of the first read packet must contain a
+            Late Status field.  If we do not wish to use this channel you can specify an empty packet.  If you want to make this status bit available 
+            to the user you can specify it as a Boolean channel in the packet. -->
+
+        <Packet>    <!--Packet 2-->
+            <U8>
+                <Name>DIOPORT In 0 on C1</Name>
+                <Description>Digital lines DIO0 to DIO7 on connector 1 represented as a 8 bit input port.</Description>
+                <Category>Input\Digital</Category>
+                <Symbol>DI</Symbol>
+            </U8>
+            <U8>
+                <Name>DIOPORT In 1 on C1</Name>
+                <Description>Digital lines DIO8 to DIO15 on connector 1 represented as a 8 bit input port.</Description>
+                <Category>Input\Digital</Category>
+                <Symbol>DI</Symbol>
+            </U8>
+            <U8>
+                <Name>DIOPORT In 2 on C1</Name>
+                <Description>Digital lines DIO16 to DIO23 on connector 1 represented as a 8 bit input port.</Description>
+                <Category>Input\Digital</Category>
+                <Symbol>DI</Symbol>
+            </U8>
+            <U8>
+                <Name>DIOPORT In 3 on C1</Name>
+                <Description>Digital lines DIO24 to DIO31 on connector 1 represented as a 8 bit input port.</Description>
+                <Category>Input\Digital</Category>
+                <Symbol>DI</Symbol>
+            </U8>
+            <U8>
+                <Name>DIOPORT In 4 on C1</Name>
+                <Description>Digital lines DIO32 to DIO39 on connector 1 represented as a 8 bit input port.</Description>
+                <Category>Input\Digital</Category>
+                <Symbol>DI</Symbol>
+            </U8>
+        </Packet>
+
+        <Packet>    <!--Packet 3-->
+            <PWM>
+                <Name>PWM In 0</Name>
+                <Description>PWM input using digital line DIO0 on connector 0.</Description>
+                <Category>Input\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM In</Symbol>
+                <Parameters>
+                    <U32>
+                        <Name>Time Out (ms)</Name>
+                        <ControlName>PulseMeas 0 Timeout</ControlName>
+                        <InitialValue>10</InitialValue>
+                        <Scale>107374.182375</Scale>    <!--(2^32 - 1)(U32) / 40000 ticks (1ms) = 107374-->
+                    </U32>
+                </Parameters>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 4-->
+            <PWM>
+                <Name>PWM In 1</Name>
+                <Description>PWM input using digital line DIO1 on connector 0.</Description>
+                <Category>Input\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM In</Symbol>
+                <Parameters>
+                    <U32>
+                        <Name>Time Out (ms)</Name>
+                        <ControlName>PulseMeas 1 Timeout</ControlName>
+                        <InitialValue>10</InitialValue>
+                        <Scale>107374.182375</Scale>    <!--(2^32 - 1)(U32) / 40000 ticks (1ms) = 107374-->
+                    </U32>
+                </Parameters>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 5-->
+            <PWM>
+                <Name>PWM In 2</Name>
+                <Description>PWM input using digital line DIO2 on connector 0.</Description>
+                <Category>Input\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM In</Symbol>
+                <Parameters>
+                    <U32>
+                        <Name>Time Out (ms)</Name>
+                        <ControlName>PulseMeas 2 Timeout</ControlName>
+                        <InitialValue>10</InitialValue>
+                        <Scale>107374.182375</Scale>    <!--(2^32 - 1)(U32) / 40000 ticks (1ms) = 107374-->
+                    </U32>
+                </Parameters>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 6-->
+            <PWM>
+                <Name>PWM In 3</Name>
+                <Description>PWM input using digital line DIO3 on connector 0.</Description>
+                <Category>Input\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM In</Symbol>
+                <Parameters>
+                    <U32>
+                        <Name>Time Out (ms)</Name>
+                        <ControlName>PulseMeas 3 Timeout</ControlName>
+                        <InitialValue>10</InitialValue>
+                        <Scale>107374.182375</Scale>    <!--(2^32 - 1)(U32) / 40000 ticks (1ms) = 107374-->
+                    </U32>
+                </Parameters>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 7-->
+            <PWM>
+                <Name>PWM In 4</Name>
+                <Description>PWM input using digital line DIO8 on connector 0.</Description>
+                <Category>Input\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM In</Symbol>
+                <Parameters>
+                    <U32>
+                        <Name>Time Out (ms)</Name>
+                        <ControlName>PulseMeas 4 Timeout</ControlName>
+                        <InitialValue>10</InitialValue>
+                        <Scale>107374.182375</Scale>    <!--(2^32 - 1)(U32) / 40000 ticks (1ms) = 107374-->
+                    </U32>
+                </Parameters>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 8-->
+            <PWM>
+                <Name>PWM In 5</Name>
+                <Description>PWM input using digital line DIO9 on connector 0.</Description>
+                <Category>Input\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM In</Symbol>
+                <Parameters>
+                    <U32>
+                        <Name>Time Out (ms)</Name>
+                        <ControlName>PulseMeas 5 Timeout</ControlName>
+                        <InitialValue>10</InitialValue>
+                        <Scale>107374.182375</Scale>    <!--(2^32 - 1)(U32) / 40000 ticks (1ms) = 107374-->
+                    </U32>
+                </Parameters>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 9-->
+            <PWM>
+                <Name>PWM In 6</Name>
+                <Description>PWM input using digital line DIO10 on connector 0.</Description>
+                <Category>Input\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM In</Symbol>
+                <Parameters>
+                    <U32>
+                        <Name>Time Out (ms)</Name>
+                        <ControlName>PulseMeas 6 Timeout</ControlName>
+                        <InitialValue>10</InitialValue>
+                        <Scale>107374.182375</Scale>    <!--(2^32 - 1)(U32) / 40000 ticks (1ms) = 107374-->
+                    </U32>
+                </Parameters>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 10-->
+            <PWM>
+                <Name>PWM In 7</Name>
+                <Description>PWM input using digital line DIO11 on connector 0.</Description>
+                <Category>Input\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM In</Symbol>
+                <Parameters>
+                    <U32>
+                        <Name>Time Out (ms)</Name>
+                        <ControlName>PulseMeas 7 Timeout</ControlName>
+                        <InitialValue>10</InitialValue>
+                        <Scale>107374.182375</Scale>    <!--(2^32 - 1)(U32) / 40000 ticks (1ms) = 107374-->
+                    </U32>
+                </Parameters>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 11-->
+            <I16>
+                <Name>AI0</Name>
+                <Description>Analog input channel AI0 on connector 0.</Description>
+                <Category>Input\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AI</Symbol>
+            </I16>
+            <I16>
+                <Name>AI1</Name>
+                <Description>Analog input channel AI1 on connector 0.</Description>
+                <Category>Input\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AI</Symbol>
+            </I16>
+            <I16>
+                <Name>AI2</Name>
+                <Description>Analog input channel AI2 on connector 0.</Description>
+                <Category>Input\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AI</Symbol>
+            </I16>
+            <I16>
+                <Name>AI3</Name>
+                <Description>Analog input channel AI3 on connector 0.</Description>
+                <Category>Input\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AI</Symbol>
+            </I16>
+        </Packet>
+
+        <Packet>    <!--Packet 12-->
+            <I16>
+                <Name>AI4</Name>
+                <Description>Analog input channel AI4 on connector 0.</Description>
+                <Category>Input\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AI</Symbol>
+            </I16>
+            <I16>
+                <Name>AI5</Name>
+                <Description>Analog input channel AI5 on connector 0.</Description>
+                <Category>Input\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AI</Symbol>
+            </I16>
+            <I16>
+                <Name>AI6</Name>
+                <Description>Analog input channel AI6 on connector 0.</Description>
+                <Category>Input\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AI</Symbol>
+            </I16>
+            <I16>
+                <Name>AI7</Name>
+                <Description>Analog input channel AI7 on connector 0.</Description>
+                <Category>Input\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AI</Symbol>
+            </I16>
+        </Packet>
+
+    </DMA_Read>
+
+
+    <DMA_Write> <!--DMA_Write uses the same structure as DMA_Read.  Any differences between read and write operations are noted above. -->
+
+        <Packets>11</Packets>
+
+        <Packet>    <!--Packet 1-->
+            <U8>
+                <Name>DIOPORT Out 0 on C2</Name>
+                <Description>Digital lines DIO0 to DIO7 on connector 1 represented as a 8 bit output port.</Description>
+                <Category>Output\Digital</Category>
+                <Symbol>DO</Symbol>
+            </U8>
+            <U8>
+                <Name>DIOPORT Out 1 on C2</Name>
+                <Description>Digital lines DIO8 to DIO15 on connector 1 represented as a 8 bit output port.</Description>
+                <Category>Output\Digital</Category>
+                <Symbol>DO</Symbol>
+            </U8>
+            <U8>
+                <Name>DIOPORT Out 2 on C2</Name>
+                <Description>Digital lines DIO16 to DIO23 on connector 1 represented as a 8 bit output port.</Description>
+                <Category>Output\Digital</Category>
+                <Symbol>DO</Symbol>
+            </U8>
+            <U8>
+                <Name>DIOPORT Out 3 on C2</Name>
+                <Description>Digital lines DIO24 to DIO31 on connector 1 represented as a 8 bit output port.</Description>
+                <Category>Output\Digital</Category>
+                <Symbol>DO</Symbol>
+            </U8>
+            <U8>
+                <Name>DIOPORT Out 4 on C2</Name>
+                <Description>Digital lines DIO32 to DIO39 on connector 1 represented as a 8 bit output port.</Description>
+                <Category>Output\Digital</Category>
+                <Symbol>DO</Symbol>
+            </U8>
+        </Packet>
+
+        <Packet>    <!--Packet 2-->
+            <PWM>
+                <Name>PWM Out 0</Name>
+                <Description>PWM output using digital line DIO4 on connector 0.</Description>
+                <Category>Output\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM Out</Symbol>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 3-->
+            <PWM>
+                <Name>PWM Out 1</Name>
+                <Description>PWM output using digital line DIO5 on connector 0.</Description>
+                <Category>Output\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM Out</Symbol>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 4-->
+            <PWM>
+                <Name>PWM Out 2</Name>
+                <Description>PWM output using digital line DIO6 on connector 0.</Description>
+                <Category>Output\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM Out</Symbol>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 5-->
+            <PWM>
+                <Name>PWM Out 3</Name>
+                <Description>PWM output using digital line DIO7  on connector 0.</Description>
+                <Category>Output\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM Out</Symbol>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 6-->
+            <PWM>
+                <Name>PWM Out 4</Name>
+                <Description>PWM output using digital line DIO12 on connector 0.</Description>
+                <Category>Output\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM Out</Symbol>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 7-->
+            <PWM>
+                <Name>PWM Out 5</Name>
+                <Description>PWM output using digital line DIO13 on connector 0.</Description>
+                <Category>Output\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM Out</Symbol>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 8-->
+            <PWM>
+                <Name>PWM Out 6</Name>
+                <Description>PWM output using digital line DIO14 on connector 0.</Description>
+                <Category>Output\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM Out</Symbol>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 9-->
+            <PWM>
+                <Name>PWM Out 7</Name>
+                <Description>PWM output using digital line DIO15 on connector 0.</Description>
+                <Category>Output\PWM</Category>
+                <Scale>100</Scale>
+                <Unit>%</Unit>
+                <Symbol>PWM Out</Symbol>
+            </PWM>
+        </Packet>
+
+        <Packet>    <!--Packet 10-->
+            <I16>
+                <Name>AO0</Name>
+                <Description>Analog output channel AO0 on connector 0.</Description>
+                <Category>Output\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AO</Symbol>
+            </I16>
+            <I16>
+                <Name>AO1</Name>
+                <Description>Analog output channel AO1 on connector 0.</Description>
+                <Category>Output\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AO</Symbol>
+            </I16>
+            <I16>
+                <Name>AO2</Name>
+                <Description>Analog output channel AO2 on connector 0.</Description>
+                <Category>Output\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AO</Symbol>
+            </I16>
+            <I16>
+                <Name>AO3</Name>
+                <Description>Analog output channel AO3 on connector 0.</Description>
+                <Category>Output\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AO</Symbol>
+            </I16>
+        </Packet>
+
+        <Packet>    <!--Packet 11-->
+            <I16>
+                <Name>AO4</Name>
+                <Description>Analog output channel AO4 on connector 0.</Description>
+                <Category>Output\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AO</Symbol>
+            </I16>
+            <I16>
+                <Name>AO5</Name>
+                <Description>Analog output channel AO5 on connector 0.</Description>
+                <Category>Output\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AO</Symbol>
+            </I16>
+            <I16>
+                <Name>AO6</Name>
+                <Description>Analog output channel AO6 on connector 0.</Description>
+                <Category>Output\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AO</Symbol>
+            </I16>
+            <I16>
+                <Name>AO7</Name>
+                <Description>Analog output channel AO7 on connector 0.</Description>
+                <Category>Output\Analog</Category>
+                <Scale>10</Scale>
+                <Offset>0</Offset>
+                <Unit>Volts</Unit>
+                <Symbol>AO</Symbol>
+            </I16>
+        </Packet>
+
+    </DMA_Write>
+
+</FPGADMAChannelData>

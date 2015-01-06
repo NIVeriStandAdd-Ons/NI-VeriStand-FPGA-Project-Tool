@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='windows-1252' standalone='yes'?>
+<MetaData>
+<ProjectTemplate>
+  <Title localize="yes">NI VeriStand FPGA Project</Title>
+  <Description localize="yes">The NI VeriStand FPGA Project Wizard helps you discover or create RIO hardware devices for NI VeriStand FPGA bitfile development.</Description>
+  <Filters localize="yes">Templates:Desktop</Filters>
+  <Keywords localize="yes">fpga;project;wizard;rio;crio;r series;flexrio;nivs;veristand</Keywords>
+  <LocationPath>VeriStand/FpgaProjectWizard</LocationPath>
+  <ProjectPath></ProjectPath>   
+  <ListboxImagePath>veristand.png</ListboxImagePath>
+  <DocumentationPath></DocumentationPath>   
+  <CustomVIMode>AfterPage1</CustomVIMode>
+  <CustomVIPath>launchNIVSFpgaProjectWizard.vi</CustomVIPath>
+</ProjectTemplate>
+</MetaData>

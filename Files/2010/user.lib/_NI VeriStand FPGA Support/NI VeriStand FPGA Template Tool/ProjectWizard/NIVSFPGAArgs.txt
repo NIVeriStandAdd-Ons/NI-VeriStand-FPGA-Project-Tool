@@ -1,0 +1,3 @@
+[WizardArgs]
+WizardList=resource/plugins/NewDialogFiles/ProjectWizards/GenProjFrameWork/GPFW Wizard.vi:user.lib/_NI VeriStand FPGA Support/NI VeriStand FPGA Template Tool/ProjectWizard/NIVSFPGAGPFWArgs.txt,user.lib/_NI VeriStand FPGA Support/NI VeriStand FPGA Template Tool/ProjectWizard/subVIs/nivsfpga_Client.vi
+WizardType=NIVS_FPGA

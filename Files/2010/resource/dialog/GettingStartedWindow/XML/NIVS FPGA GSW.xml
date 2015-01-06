@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='windows-1252' standalone='yes'?>
+<Tree localize="yes">
+	<Node>
+		<Name localize="yes">NI VeriStand FPGA Project</Name>
+		<GUID>{01D7B8FB-DF9F-79AD-32A6-B0FD3A9FAC9B}</GUID>
+		<ParentGUID>{6d128cfe-aa29-40ea-ba27-8098931c7b07}</ParentGUID>
+		<Column>1</Column>
+		<Handler>RingItemVINoParams</Handler>
+		<Module>FPGA</Module>
+		<VI>user.lib/_NI VeriStand FPGA Support/NI VeriStand FPGA Template Tool/NI VeriStand FPGA Template Tool.vi</VI> 
+	</Node>
+
+    <Globals>
+		<GettingStarted localize="yes">Getting Started</GettingStarted>
+		<FilesColumnHeader localize="yes">Files</FilesColumnHeader>
+		<ResourcesColumnHeader localize="yes">Resources</ResourcesColumnHeader>
+		<SearchHelpLabel localize="yes">Search Help</SearchHelpLabel>
+		<SearchButtonBooleanText localize="yes">Go</SearchButtonBooleanText>
+		<NonWindowsLabVIEWInfoMessage localize="yes">LabVIEW Information</NonWindowsLabVIEWInfoMessage>
+		<NISearchHint localize="yes">Search</NISearchHint>
+		<LVState_Failure localize="yes">Invalidly licensed version</LVState_Failure>
+		<LVState_Base localize="yes">Licensed for Base Version</LVState_Base>
+		<LVState_Full localize="yes">Licensed for Full Version</LVState_Full>
+		<LVState_Pro localize="yes">Licensed for Professional Version</LVState_Pro>
+		<LVState_Eval localize="yes">LabVIEW Evaluation Mode</LVState_Eval>
+		<LVState_Student localize="yes">LabVIEW Student Edition</LVState_Student>
+		<LVState_Player localize="yes">LabVIEW Player</LVState_Player>
+		<LVState_DebugDeployment localize="yes">Licensed for Debug Deployment only</LVState_DebugDeployment>
+		<LVState_Unknown localize="yes">Unknown LabVIEW license state</LVState_Unknown>
+		<TargetButtonBooleanText localize="yes">Go</TargetButtonBooleanText>
+	</Globals>
+    
+</Tree>
+
+

@@ -1,0 +1,9 @@
+[WizardArgs]
+WizardTitle="Create New NI VeriStand Custom FPGA Personality Project"
+NoProjAvailErrorString="No project wizards for LabVIEW FPGA are available."
+NoProjAvailHelpFile="lvfpgahelp.chm"
+NoProjAvailHelpTopic="Adding_an_FPGA_target.html"
+HelpButtonHelpFile="lvfpgadialog.chm"
+HelpButtonHelpTopic="FPGA_Create_Project.html"
+ProjectList=""
+WizardINIDir="user.lib/_NI VeriStand FPGA Support/NI VeriStand FPGA Template Tool/ProjectWizard/StartupWizards"

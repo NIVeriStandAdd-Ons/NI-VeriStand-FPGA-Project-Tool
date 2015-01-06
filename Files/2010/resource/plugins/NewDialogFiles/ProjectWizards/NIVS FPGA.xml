@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1252" standalone="yes"?>
+<Tree localize="yes">
+   <Node>
+      <Name localize="yes">NI VeriStand Custom FPGA Project</Name>
+      <GUID>{5461135B-EF55-89BE-1350-61C04D270E2D}</GUID>
+      <ParentGUID>00770B31-E6B3-440E-BFED-6FA5AA81B661</ParentGUID>
+      <ItemPath>resource/plugins/NewDialogFiles/ProjectWizards/ProjectWizard.llb/ProjectWizard2 Host.vi</ItemPath>
+      <WizardArg>user.lib/_NI VeriStand FPGA Support/NI VeriStand FPGA Template Tool/ProjectWizard/NIVSFPGAArgs.txt</WizardArg>
+      <ItemType>ProjectWizard</ItemType>
+      <Description localize="yes">NI VeriStand Custom FPGA Project starts a wizard if one is available for your target.</Description>
+      <ImagePath>resource/RVI/StartupProjectWizard/niLvFpgaProjectWizardPictureDefaultWhiteBackground.png</ImagePath>
+      <Version>1</Version>
+      <Weight>100000</Weight>
+      <NDIconPath>resource/RVI/StartupProjectWizard/niLvFpgaProject16x16icon.png</NDIconPath>
+      <ProjectPossible>0</ProjectPossible>
+      <FeatureName>LabVIEW_FPGA</FeatureName>
+   </Node>
+</Tree>
